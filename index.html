@@ -98,6 +98,14 @@ main{padding:60px 0 0}
   border:1px solid var(--line);border-radius:6px;padding:3px 8px;line-height:1.5;transition:all .2s ease}
 .lg:hover{border-color:var(--blue);color:var(--blue);background:rgba(27,95,168,.07)}
 .body p{margin:0;font-size:15px;color:var(--mute);flex:1}
+.dl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dl-lbl{font-family:var(--dsp);font-weight:600;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint)}
+.pdfbtn{display:inline-flex;align-items:center;gap:5px;font-family:var(--dsp);font-weight:600;
+  font-size:11px;letter-spacing:.05em;color:var(--mute);border:1px solid var(--line);
+  border-radius:6px;padding:4px 9px 4px 10px;line-height:1.5;transition:all .2s ease}
+.pdfbtn svg{flex-shrink:0}
+.pdfbtn:hover{border-color:var(--green);color:#4c7a17;background:rgba(124,185,46,.09)}
 .meta{display:flex;align-items:center;gap:12px;margin-top:6px;padding-top:14px;
   border-top:1px solid var(--line);font-size:13px;color:var(--faint);
   font-variant-numeric:tabular-nums}
@@ -178,6 +186,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>NORM, licenciamento radiológico junto à CNEN, PMRA e oito cases reais — de Santa Quitéria à Petrobras.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="mineracao.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="mineracao-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>17 slides</span>
             <a class="go" href="mineracao.html">Abrir <span class="arw">→</span></a>
           </div>
@@ -196,6 +209,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>A apresentação guarda-chuva: quem somos, os seis segmentos, técnicas analíticas, acreditações e conformidade regulatória.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="institucional.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="institucional-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>16 slides</span>
             <a class="go" href="institucional.html">Abrir <span class="arw">→</span></a>
           </div>
@@ -214,6 +232,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>O modelo complementar: ampliar o portfólio do parceiro sem competir com a rotina dele.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="laboratorios-parceiros.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="laboratorios-parceiros-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>12 slides</span>
             <a class="go" href="laboratorios-parceiros.html">Abrir <span class="arw">→</span></a>
           </div>
@@ -232,6 +255,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>Requisitos de FDA, FAO, União Europeia e Portaria 146, escopo de radionuclídeos e laudos para exportação.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="alimentos.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="alimentos-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>10 slides</span>
             <a class="go" href="alimentos.html">Abrir <span class="arw">→</span></a>
           </div>
@@ -250,6 +278,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>NORM em operações offshore e FPSOs: matrizes, técnicas analíticas, radionuclídeos e descomissionamento.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="oleo-gas.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="oleo-gas-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>17 slides</span>
             <a class="go" href="oleo-gas.html">Abrir <span class="arw">→</span></a>
           </div>
@@ -275,6 +308,11 @@ footer .sep{margin-left:auto}
             </div>
           </div>
           <p>Onboarding de novos colaboradores: cultura, regras internas, jornada, benefícios e Projeto AVANTE.</p>
+          <div class="dl">
+            <span class="dl-lbl">Baixar PDF</span>
+            <a class="pdfbtn" href="integracao.pdf" download title="Baixar PDF em português">PT<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+            <a class="pdfbtn" href="integracao-en.pdf" download title="Download PDF in English">EN<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path fill="currentColor" d="M8 1a1 1 0 0 1 1 1v6.59l2.3-2.3a1 1 0 1 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.42L7 8.59V2a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M2 12a1 1 0 0 1 1 1v1h10v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg></a>
+          </div>
           <div class="meta"><span class="dot"></span><span>9 slides</span>
             <a class="go" href="integracao.html">Abrir <span class="arw">→</span></a>
           </div>
