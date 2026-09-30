@@ -1,18 +1,22 @@
 # Apresentações GLP Laboratórios — site estático
 
-Pasta pronta para publicar no GitHub Pages. Nenhuma dependência externa:
-fontes, fotos, logos e certificados estão embutidos em cada arquivo.
+Pasta pronta para publicar no GitHub Pages. Nenhuma dependência externa: fontes, fotos,
+logos e certificados ficam na pasta `assets/`, compartilhada por todas as páginas (cada
+imagem existe uma vez só, mesmo quando aparece em vários decks e nas versões PT e EN).
 
 ## Conteúdo
 
 | Arquivo | O que é |
 |---|---|
-| `index.html` | Índice com os cards das cinco apresentações |
-| `mineracao.html` | Mineração — 17 slides |
-| `institucional.html` | Institucional — 16 slides |
-| `laboratorios-parceiros.html` | Laboratórios Parceiros — 12 slides |
-| `alimentos.html` | Alimentos — 10 slides |
-| `integracao.html` | Integração / onboarding — 9 slides (uso interno) |
+| `index.html` | Índice com um card por apresentação (botões PT/EN e download de PDF) |
+| `mineracao.html` / `mineracao-en.html` | Mineração / Mining — 17 slides |
+| `institucional.html` / `institucional-en.html` | Institucional / Corporate — 16 slides |
+| `laboratorios-parceiros.html` / `…-en.html` | Laboratórios Parceiros / Partner Laboratories — 12 slides |
+| `alimentos.html` / `alimentos-en.html` | Alimentos / Food — 10 slides |
+| `oleo-gas.html` / `oleo-gas-en.html` | Óleo & Gás / Oil & Gas — 17 slides |
+| `integracao.html` / `integracao-en.html` | Integração / Onboarding — 9 slides (uso interno) |
+| `*.pdf` | O PDF de cada apresentação, com o mesmo nome da página |
+| `assets/` | Imagens e fontes usadas pelas páginas — **precisa ir junto** |
 | `.nojekyll` | Impede o GitHub de processar os arquivos com Jekyll |
 | `robots.txt` | Pede aos buscadores para não indexar |
 
@@ -21,7 +25,7 @@ fontes, fotos, logos e certificados estão embutidos em cada arquivo.
 1. Crie um repositório no GitHub (pode ser público — o conteúdo não é secreto,
    mas nenhuma página é indexável).
 2. Suba **o conteúdo desta pasta na raiz do repositório**, não a pasta em si.
-   O `index.html` precisa ficar na raiz.
+   O `index.html` precisa ficar na raiz, com a pasta `assets/` ao lado.
 3. No repositório: **Settings → Pages → Source: Deploy from a branch**,
    branch `main`, pasta `/ (root)`. Salve.
 4. Em um ou dois minutos o site sai em
@@ -61,6 +65,7 @@ ignorado e a meta tag é o que segura. Com domínio próprio, os dois passam a v
 
 ## Atualizar
 
-As apresentações também estão publicadas como artifacts no Claude, onde são
-atualizadas em cima do mesmo link. Estes arquivos são uma cópia do momento em
-que foram gerados: para atualizar aqui, é preciso gerar de novo e subir por cima.
+Estes arquivos são uma cópia do momento em que foram gerados: para atualizar, gere de novo
+e suba por cima. Os nomes das imagens em `assets/` mudam quando a imagem muda, então vale
+apagar a pasta `assets/` antiga do repositório antes de subir a nova, para não acumular
+arquivos que ninguém usa mais.
