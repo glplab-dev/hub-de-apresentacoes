@@ -63,6 +63,17 @@ ignorado e a meta tag é o que segura. Com domínio próprio, os dois passam a v
 - `#7` no fim do endereço abre direto no slide 7
 - Botão **← Índice** na barra inferior volta para a página inicial
 
+### Modo apresentação (piloto: `mineracao.html`)
+
+- `P` ou botão **Modo apresentador** — abre uma segunda janela com slide atual, próximo
+  slide, notas, relógio e cronômetro. As duas janelas andam juntas.
+- Projetor/TV: arraste a janela dos slides para a segunda tela e aperte `F` nela.
+  Teams/Meet: compartilhe só a **janela** dos slides.
+- `L` — apontador laser (na janela do apresentador, passe o mouse sobre o slide atual)
+- `B` ou `.` — tela preta · `T` — pausa o cronômetro (janela do apresentador)
+- Passadores comuns funcionam (PageDown/PageUp; `F5` entra em tela cheia)
+- As notas ficam em `window.__notes`, no fim do arquivo, um item por slide.
+
 ## Atualizar
 
 Estes arquivos são uma cópia do momento em que foram gerados: para atualizar, gere de novo
