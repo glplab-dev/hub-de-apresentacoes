@@ -1014,10 +1014,13 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
 /* ==== Modo apresentação: apresentador (2ª janela), laser, tela preta, passador ==== */
 (function(){
   "use strict";
+  var LANG = ((document.documentElement.lang || "pt").slice(0,2) === "en") ? "en" : "pt";
+  var TT = {"pt": {"blackScreen": "Tela preta", "laser": "Laser", "laserTitle": "Apontador laser (L)", "presTitle": "Modo apresentador: notas, próximo slide e cronômetro (P)", "presBtn": "Modo apresentador", "popupBlocked": "O navegador bloqueou a janela do apresentador. Libere pop-ups para este site e tente de novo.", "presenterPrefix": "Apresentador", "topTitle": "Modo apresentador", "searching": "Procurando a janela dos slides…", "openAudTitle": "Abrir a janela que vai para o projetor ou para a transmissão", "openAud": "Abrir janela dos slides", "pauseTitle": "Pausar / continuar (T)", "pause": "Pausar", "resume": "Continuar", "resetTitle": "Zerar cronômetro", "reset": "Zerar", "helpTitle": "Como usar", "curSlide": "Slide atual", "next": "Próximo", "notes": "Notas", "fontDown": "Diminuir letra", "fontUp": "Aumentar letra", "prev": "← Anterior", "nextBtn": "Próximo →", "laserBtnTitle": "Apontador laser: passe o mouse sobre o slide atual (L)", "blkTitle": "Escurece a tela do público (B)", "blkBtn": "Tela preta", "ovTitle": "Ver todos os slides (O)", "ovBtn": "Visão geral", "help": "← → ou passador para navegar · T pausa o cronômetro", "end": "Fim da apresentação", "noNotes": "Sem notas para este slide.", "conn": "Janela dos slides conectada", "notConn": "Janela dos slides não conectada", "helpHead": "Como apresentar", "h1": "Com projetor ou TV: arraste a <b>janela dos slides</b> para a segunda tela e aperte <b>F</b> nela (tela cheia). Esta janela fica no notebook.", "h2": "Em Teams ou Meet: compartilhe só a <b>janela</b> dos slides, não a tela inteira.", "h3": "Navegue por aqui, pelo passador ou pelas setas. As duas janelas andam juntas.", "h4": "<b>L</b> liga o laser: passe o mouse sobre o slide atual. <b>B</b> escurece a tela do público.", "ok": "Entendi", "param": "apresentador", "hint": " · <kbd>P</kbd> modo apresentador · <kbd>L</kbd> laser"}, "en": {"blackScreen": "Black screen", "laser": "Laser", "laserTitle": "Laser pointer (L)", "presTitle": "Presenter mode: notes, next slide and timer (P)", "presBtn": "Presenter mode", "popupBlocked": "The browser blocked the presenter window. Allow pop-ups for this site and try again.", "presenterPrefix": "Presenter", "topTitle": "Presenter mode", "searching": "Looking for the slides window…", "openAudTitle": "Open the window that goes to the projector or the broadcast", "openAud": "Open slides window", "pauseTitle": "Pause / resume (T)", "pause": "Pause", "resume": "Resume", "resetTitle": "Reset timer", "reset": "Reset", "helpTitle": "How to use", "curSlide": "Current slide", "next": "Next", "notes": "Notes", "fontDown": "Smaller text", "fontUp": "Larger text", "prev": "← Previous", "nextBtn": "Next →", "laserBtnTitle": "Laser pointer: hover over the current slide (L)", "blkTitle": "Darkens the audience screen (B)", "blkBtn": "Black screen", "ovTitle": "See all slides (O)", "ovBtn": "Overview", "help": "← → or clicker to navigate · T pauses the timer", "end": "End of presentation", "noNotes": "No notes for this slide.", "conn": "Slides window connected", "notConn": "Slides window not connected", "helpHead": "How to present", "h1": "With a projector or TV: drag the <b>slides window</b> to the second screen and press <b>F</b> on it (fullscreen). This window stays on your laptop.", "h2": "On Teams or Meet: share only the slides <b>window</b>, not the whole screen.", "h3": "Navigate from here, with a clicker or the arrow keys. Both windows move together.", "h4": "<b>L</b> turns on the laser: hover over the current slide. <b>B</b> darkens the audience screen.", "ok": "Got it", "param": "presenter", "hint": " · <kbd>P</kbd> presenter mode · <kbd>L</kbd> laser"}};
+  var T = TT[LANG];
   var D = window.__deck; if (!D) return;
   var NOTES = window.__notes || [];
   var stage = D.stage, slides = D.slides, N = D.N;
-  var IS_P = /[?&]apresentador\b/.test(location.search);
+  var IS_P = /[?&](apresentador|presenter)\b/.test(location.search);
   var KEY = 'glp-deck:' + location.pathname.replace(/[?#].*$/,'');
   function pad(n){ return (n<10?'0':'')+n; }
   function $(id){ return document.getElementById(id); }
@@ -1052,7 +1055,7 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
 
   /* ---------- laser e tela preta (as duas janelas) ---------- */
   var laser = document.createElement('div'); laser.className = 'laser'; stage.appendChild(laser);
-  var blk = document.createElement('div'); blk.className = 'blk'; blk.innerHTML = '<span>Tela preta</span>';
+  var blk = document.createElement('div'); blk.className = 'blk'; blk.innerHTML = '<span>' + T.blackScreen + '</span>';
   stage.parentNode.appendChild(blk);
   var laserOn = false, blkOn = false, lastSent = 0;
 
@@ -1100,10 +1103,10 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   function baseUrl(){ return location.href.replace(/[?#].*$/, ''); }
   function openPresenter(){
     var w = null;
-    try { w = window.open(baseUrl() + '?apresentador#' + (D.cur()+1), 'glp-apresentador',
+    try { w = window.open(baseUrl() + '?' + T.param + '#' + (D.cur()+1), 'glp-apresentador',
                          'width=1280,height=780,menubar=no,toolbar=no,location=no'); } catch(e){}
     if (w) { peer = w; try { w.focus(); } catch(e){} }
-    else alert('O navegador bloqueou a janela do apresentador. Libere pop-ups para este site e tente de novo.');
+    else alert(T.popupBlocked);
   }
   function openAudience(){
     var w = null;
@@ -1126,10 +1129,10 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   if (!IS_P) {
     var bFs = $('bFs');
     if (bFs) {
-      var bL = document.createElement('button'); bL.id = 'bLaser'; bL.title = 'Apontador laser (L)'; bL.textContent = 'Laser';
+      var bL = document.createElement('button'); bL.id = 'bLaser'; bL.title = T.laserTitle; bL.textContent = T.laser;
       bL.onclick = function(){ setLaser(!laserOn); };
-      var bP = document.createElement('button'); bP.id = 'bPres'; bP.title = 'Modo apresentador: notas, próximo slide e cronômetro (P)';
-      bP.textContent = 'Modo apresentador'; bP.onclick = openPresenter;
+      var bP = document.createElement('button'); bP.id = 'bPres'; bP.title = T.presTitle;
+      bP.textContent = T.presBtn; bP.onclick = openPresenter;
       bFs.parentNode.appendChild(bL); bFs.parentNode.appendChild(bP);
     }
     var _sl = setLaser;
@@ -1138,31 +1141,31 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   }
 
   /* ================= JANELA DO APRESENTADOR ================= */
-  document.title = 'Apresentador · ' + document.title;
+  document.title = T.presenterPrefix + ' · ' + document.title;
   document.body.classList.add('pm');
   var ttl = (document.title.split('·').pop() || '').trim();
   var shell = document.createElement('div'); shell.className = 'pmx';
   shell.innerHTML =
     '<div class="pmx-top">' +
-      '<div class="pmx-ttl">Modo apresentador · <b>' + ttl + '</b></div>' +
-      '<div class="pmx-con" id="pCon"><i></i><span>Procurando a janela dos slides…</span> <button id="pOpenA" title="Abrir a janela que vai para o projetor ou para a transmissão">Abrir janela dos slides</button></div>' +
+      '<div class="pmx-ttl">' + T.topTitle + ' · <b>' + ttl + '</b></div>' +
+      '<div class="pmx-con" id="pCon"><i></i><span>' + T.searching + '</span> <button id="pOpenA" title="' + T.openAudTitle + '">' + T.openAud + '</button></div>' +
       '<div class="pmx-clock" id="pClock">--:--</div>' +
       '<div class="pmx-timer" id="pTimer"><span class="tv" id="pTv">00:00:00</span>' +
-        '<button id="pTp" title="Pausar / continuar (T)">Pausar</button><button id="pTr" title="Zerar cronômetro">Zerar</button></div>' +
-      '<button id="pHelp" title="Como usar">?</button>' +
+        '<button id="pTp" title="' + T.pauseTitle + '">' + T.pause + '</button><button id="pTr" title="' + T.resetTitle + '">' + T.reset + '</button></div>' +
+      '<button id="pHelp" title="' + T.helpTitle + '">?</button>' +
     '</div>' +
-    '<div class="pmx-cur"><div class="pmx-lab">Slide atual <b id="pLab"></b></div><div class="pmx-box" id="pBox"></div></div>' +
+    '<div class="pmx-cur"><div class="pmx-lab">' + T.curSlide + ' <b id="pLab"></b></div><div class="pmx-box" id="pBox"></div></div>' +
     '<div class="pmx-side">' +
-      '<div class="pmx-next"><div class="pmx-lab">Próximo <b id="pNlab"></b></div><div class="pmx-nf" id="pNf"></div></div>' +
-      '<div class="pmx-notes"><div class="pmx-lab">Notas<span class="pmx-fs"><button id="pFm" title="Diminuir letra">A−</button><button id="pFp" title="Aumentar letra">A+</button></span></div>' +
+      '<div class="pmx-next"><div class="pmx-lab">' + T.next + ' <b id="pNlab"></b></div><div class="pmx-nf" id="pNf"></div></div>' +
+      '<div class="pmx-notes"><div class="pmx-lab">' + T.notes + '<span class="pmx-fs"><button id="pFm" title="' + T.fontDown + '">A−</button><button id="pFp" title="' + T.fontUp + '">A+</button></span></div>' +
         '<div class="pmx-nb" id="pNotes"></div></div>' +
     '</div>' +
     '<div class="pmx-bot">' +
-      '<button class="big" id="pPrev">← Anterior</button><span class="ix" id="pIx"></span><button class="big" id="pNext">Próximo →</button>' +
-      '<button id="pLaser" title="Apontador laser: passe o mouse sobre o slide atual (L)">Laser <kbd>L</kbd></button>' +
-      '<button id="pBlk" title="Escurece a tela do público (B)">Tela preta <kbd>B</kbd></button>' +
-      '<button id="pOv" title="Ver todos os slides (O)">Visão geral <kbd>O</kbd></button>' +
-      '<span class="sp"></span><span class="pmx-help">← → ou passador para navegar · T pausa o cronômetro</span>' +
+      '<button class="big" id="pPrev">' + T.prev + '</button><span class="ix" id="pIx"></span><button class="big" id="pNext">' + T.nextBtn + '</button>' +
+      '<button id="pLaser" title="' + T.laserBtnTitle + '">' + T.laser + ' <kbd>L</kbd></button>' +
+      '<button id="pBlk" title="' + T.blkTitle + '">' + T.blkBtn + ' <kbd>B</kbd></button>' +
+      '<button id="pOv" title="' + T.ovTitle + '">' + T.ovBtn + ' <kbd>O</kbd></button>' +
+      '<span class="sp"></span><span class="pmx-help">' + T.help + '</span>' +
     '</div>';
   document.body.appendChild(shell);
   var wrap = stage.parentNode;
@@ -1206,9 +1209,9 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
     $('pIx').textContent = pad(n+1) + ' / ' + pad(N);
     var f = $('pNf'); f.innerHTML = '';
     if (n+1 < N) { f.appendChild(staticClone(slides[n+1])); $('pNlab').textContent = lab(n+1); scaleNext(); }
-    else { f.innerHTML = '<div class="pmx-end">Fim da apresentação</div>'; $('pNlab').textContent = ''; }
+    else { f.innerHTML = '<div class="pmx-end">' + T.end + '</div>'; $('pNlab').textContent = ''; }
     var nb = $('pNotes'), items = NOTES[n] || [];
-    if (!items.length) { nb.innerHTML = '<div class="none">Sem notas para este slide.</div>'; }
+    if (!items.length) { nb.innerHTML = '<div class="none">' + T.noNotes + '</div>'; }
     else {
       var ul = document.createElement('ul');
       items.forEach(function(t){ var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
@@ -1223,7 +1226,7 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   function el(){ return acc + (running ? Date.now() - t0 : 0); }
   function toggleTimer(){
     if (running) { acc += Date.now() - t0; running = false; } else { t0 = Date.now(); running = true; }
-    $('pTimer').classList.toggle('paused', !running); $('pTp').textContent = running ? 'Pausar' : 'Continuar';
+    $('pTimer').classList.toggle('paused', !running); $('pTp').textContent = running ? T.pause : T.resume;
   }
   $('pTp').onclick = toggleTimer;
   $('pTr').onclick = function(){ acc = 0; t0 = Date.now(); tick(); };
@@ -1239,7 +1242,7 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   function status(){
     var ok = Date.now() - lastPong < 4500;
     var c = $('pCon'); c.classList.toggle('ok', ok);
-    c.querySelector('span').textContent = ok ? 'Janela dos slides conectada' : 'Janela dos slides não conectada';
+    c.querySelector('span').textContent = ok ? T.conn : T.notConn;
     $('pOpenA').style.display = ok ? 'none' : '';
   }
   setInterval(function(){ send({t:'ping'}); status(); }, 1500);
@@ -1249,12 +1252,12 @@ body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;just
   function help(){
     var old = document.querySelector('.pmx-tip'); if (old) { old.remove(); return; }
     var d = document.createElement('div'); d.className = 'pmx-tip';
-    d.innerHTML = '<b>Como apresentar</b><ol>' +
-      '<li>Com projetor ou TV: arraste a <b>janela dos slides</b> para a segunda tela e aperte <b>F</b> nela (tela cheia). Esta janela fica no notebook.</li>' +
-      '<li>Em Teams ou Meet: compartilhe só a <b>janela</b> dos slides, não a tela inteira.</li>' +
-      '<li>Navegue por aqui, pelo passador ou pelas setas. As duas janelas andam juntas.</li>' +
-      '<li><b>L</b> liga o laser: passe o mouse sobre o slide atual. <b>B</b> escurece a tela do público.</li></ol>' +
-      '<button id="pTipX">Entendi</button>';
+    d.innerHTML = '<b>' + T.helpHead + '</b><ol>' +
+      '<li>' + T.h1 + '</li>' +
+      '<li>' + T.h2 + '</li>' +
+      '<li>' + T.h3 + '</li>' +
+      '<li>' + T.h4 + '</li></ol>' +
+      '<button id="pTipX">' + T.ok + '</button>';
     document.body.appendChild(d);
     $('pTipX').onclick = function(){ d.remove(); };
   }

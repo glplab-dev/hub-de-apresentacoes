@@ -207,6 +207,71 @@ b,strong{font-weight:600;color:var(--ink)}
 .hud .homebtn{all:unset;cursor:pointer;color:#d8d6ce;font-family:var(--body);font-size:13px;padding:8px 14px;border-radius:999px;display:flex;align-items:center;gap:7px;line-height:1;text-decoration:none}.hud .homebtn:hover{background:rgba(255,255,255,.1);color:#fff}.hud .homebtn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 .hint kbd{font-family:var(--dsp);font-size:11px;background:rgba(255,255,255,.11);
     padding:2px 6px;border-radius:4px;color:#fff;margin:0 2px}
+
+/* ---------- modo apresentação: laser, tela preta, modo apresentador ---------- */
+.laser{position:absolute;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;
+  background:radial-gradient(circle,#ff4a3d 0 30%,rgba(255,40,30,.55) 45%,rgba(255,40,30,0) 72%);
+  box-shadow:0 0 22px 6px rgba(255,40,30,.45);z-index:90;pointer-events:none;display:none}
+.laser.show{display:block}
+.stage.lz{cursor:none}
+.blk{position:absolute;inset:0;background:#000;z-index:80;display:none}
+.blk.show{display:block}
+.blk span{display:none}
+
+body.pm{overflow:hidden;background:#0c0b10;color:#e9e7e0;font-family:var(--body)}
+body.pm .prog,body.pm .zone,body.pm .hint,body.pm .hud{display:none!important}
+.pmx{position:fixed;inset:0;display:grid;grid-template-columns:minmax(0,1.62fr) minmax(320px,1fr);
+  grid-template-rows:auto minmax(0,1fr) auto;gap:16px;padding:16px 18px}
+.pmx-top{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.pmx-ttl{font-family:var(--dsp);font-weight:600;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#a5a39b;margin-right:auto}
+.pmx-ttl b{color:#fff;font-weight:600}
+.pmx-con{font-size:13px;color:#a5a39b;display:flex;align-items:center;gap:8px}
+.pmx-con i{width:9px;height:9px;border-radius:50%;background:#d9534f;display:block}
+.pmx-con.ok i{background:var(--green)}
+.pmx-clock{font-family:var(--dsp);font-size:17px;color:#a5a39b;font-variant-numeric:tabular-nums}
+.pmx-timer{display:flex;align-items:center;gap:8px;background:#17161e;border:1px solid #2a2833;border-radius:10px;padding:6px 8px 6px 14px}
+.pmx-timer .tv{font-family:var(--dsp);font-weight:700;font-size:26px;color:#fff;font-variant-numeric:tabular-nums;min-width:118px}
+.pmx-timer.paused .tv{color:#8e8c83}
+.pmx button{all:unset;cursor:pointer;font-family:var(--body);font-size:14px;color:#e9e7e0;background:#1e1c26;
+  border:1px solid #2f2d39;border-radius:8px;padding:8px 13px;line-height:1;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.pmx button:hover{background:#2a2833;color:#fff}
+.pmx button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.pmx button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.pmx button.big{font-size:16px;padding:12px 22px}
+.pmx kbd{font-family:var(--dsp);font-size:11px;background:rgba(255,255,255,.1);border-radius:4px;padding:2px 6px;color:#cfcdc6}
+.pmx-cur{position:relative;min-height:0;display:flex;flex-direction:column;gap:8px}
+.pmx-lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8e8c83;font-weight:600;display:flex;gap:10px;align-items:center}
+.pmx-lab b{color:#e9e7e0;font-weight:600;letter-spacing:.06em}
+.pmx-box{position:relative;flex:1;min-height:0;border-radius:8px;overflow:hidden;background:#000}
+body.pm .wrap{position:absolute;inset:0;background:#000}
+body.pm .stage{box-shadow:none}
+body.pm .blk{background:rgba(0,0,0,.82)}
+body.pm .blk span{display:flex;position:absolute;inset:0;align-items:center;justify-content:center;
+  font-family:var(--dsp);font-size:64px;color:#fff;letter-spacing:.06em}
+.pmx-side{display:flex;flex-direction:column;gap:14px;min-height:0}
+.pmx-next{display:flex;flex-direction:column;gap:8px}
+.pmx-nf{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#000}
+.pmx-nf>.s{width:1920px;height:1080px;transform-origin:0 0;position:absolute;left:0;top:0}
+.pmx-end{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8e8c83;font-size:15px}
+.pmx-notes{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px}
+.pmx-nb{flex:1;min-height:0;overflow:auto;background:#15141b;border:1px solid #24222c;border-radius:8px;padding:16px 20px 16px 18px}
+.pmx-nb ul{margin:0;padding:0 0 0 1.1em}
+.pmx-nb li{font-size:var(--nfs,21px);line-height:1.45;color:#ecebe6;margin:0 0 .55em}
+.pmx-nb li::marker{color:var(--green)}
+.pmx-nb .none{color:#8e8c83;font-size:15px}
+.pmx-fs{margin-left:auto;display:flex;gap:6px}
+.pmx-fs button{padding:4px 9px;font-size:12px}
+.pmx-bot{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pmx-bot .ix{font-family:var(--dsp);font-weight:700;font-size:20px;color:#fff;min-width:92px;text-align:center;font-variant-numeric:tabular-nums}
+.pmx-bot .sp{flex:1}
+.pmx-help{font-size:12.5px;color:#8e8c83}
+.pmx-tip{position:fixed;left:50%;top:70px;transform:translateX(-50%);z-index:95;max-width:640px;background:#1b1a22;
+  border:1px solid #34323d;border-radius:12px;padding:18px 22px;font-size:14.5px;line-height:1.55;color:#d8d6ce;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.pmx-tip b{color:#fff}
+.pmx-tip ol{margin:8px 0 12px 1.2em;padding:0}
+@media (max-width:900px){
+  .pmx{grid-template-columns:1fr;grid-template-rows:auto minmax(220px,1fr) auto auto;overflow:auto}
+}
 </style>
 
 </head><body><div class="prog" id="prog"></div>
@@ -505,7 +570,7 @@ b,strong{font-weight:600;color:var(--ink)}
 
 <div class="zone l" id="zl" aria-hidden="true"></div>
 <div class="zone r" id="zr" aria-hidden="true"></div>
-<div class="hint" id="hint"><kbd>←</kbd><kbd>→</kbd> navegar · <kbd>O</kbd> visão geral · <kbd>F</kbd> tela cheia</div>
+<div class="hint" id="hint"><kbd>←</kbd><kbd>→</kbd> navegar · <kbd>O</kbd> visão geral · <kbd>F</kbd> tela cheia · <kbd>P</kbd> modo apresentador · <kbd>L</kbd> laser</div>
 <nav class="hud" id="hud" aria-label="Controles da apresentação">
   <div class="grp"><a class="homebtn" href="index.html" title="Voltar ao índice">← Índice</a></div>
   <div class="grp"><button id="bPrev" title="Slide anterior (←)" aria-label="Slide anterior">←</button>
@@ -558,8 +623,10 @@ b,strong{font-weight:600;color:var(--ink)}
   }
 
   /* ---- fit stage to viewport ---- */
+  var wrapEl = stage.parentNode;
   function fit(){
-    var s = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+    var w = wrapEl.clientWidth || window.innerWidth, h = wrapEl.clientHeight || window.innerHeight;
+    var s = Math.min(w/1920, h/1080);
     stage.style.transform = 'scale('+s+')';
   }
   window.addEventListener('resize', fit, {passive:true});
@@ -575,6 +642,7 @@ b,strong{font-weight:600;color:var(--ink)}
     idx.textContent = pad(n+1)+' / '+pad(N);
     Array.prototype.forEach.call(ovg.children, function(c,i){ c.classList.toggle('cur', i===n); });
     if (push !== false) setHash(n+1);
+    if (window.__onGo) window.__onGo(n);
   }
   function next(){ go(cur+1); }
   function prev(){ go(cur-1); }
@@ -678,7 +746,308 @@ b,strong{font-weight:600;color:var(--ink)}
   window.addEventListener('hashchange', function(){ go(fromHash(), false); });
 
   /* ---- boot ---- */
+  window.__deck = {go:go, cur:function(){return cur;}, N:N, slides:slides, stage:stage, fit:fit, toggleOv:toggleOv, fs:fs};
   go(fromHash(), false);
+})();
+</script>
+<script>window.__notes = [
+[
+"Tom acolhedor: a pessoa acabou de chegar",
+"Apresentar-se, dizer quanto tempo vai durar e avisar que há espaço para perguntas no fim"
+],
+[
+"O que o GLP faz: medir radioatividade em água, solo, alimentos, minérios e resíduos industriais",
+"Por que importa: os laudos permitem exportar, cumprir a legislação e proteger pessoas e meio ambiente",
+"Vale para qualquer função, técnica ou não"
+],
+[
+"Cultura é a forma como trabalhamos, aprendemos e colaboramos todos os dias",
+"Dar um exemplo real e recente de colaboração entre áreas",
+"O próximo slide mostra isso em comportamentos"
+],
+[
+"Quatro comportamentos: comunicação aberta, agilidade em conflitos, valorização e clima saudável",
+"Perguntar: com quem você fala quando algo não está certo?"
+],
+[
+"Combinados que fazem a operação funcionar: ponto eletrônico, refeitório, carga horária, celular e banco de horas",
+"Dizer a quem recorrer em caso de dúvida"
+],
+[
+"Confirmar em qual turno a pessoa entra",
+"Combinar o horário de almoço com a liderança direta ainda hoje",
+"Pausas: uma de manhã e uma à tarde, de até 10 minutos"
+],
+[
+"Dizer quando cada benefício começa a valer",
+"A ativação de cada cadastro é feita pelo RH: informar quem procurar"
+],
+[
+"O AVANTE é o programa de desenvolvimento",
+"Cinco frentes: crescimento profissional, capacitação contínua, competências aplicáveis, alinhamento estratégico e preparação para o futuro",
+"Como a pessoa entra: conversa com a liderança, plano individual e acompanhamento periódico"
+],
+[
+"Abrir para perguntas",
+"Apresentar a liderança direta e o padrinho ou madrinha de integração",
+"Confirmar os próximos passos da primeira semana"
+]
+];</script>
+
+<script>
+/* ==== Modo apresentação: apresentador (2ª janela), laser, tela preta, passador ==== */
+(function(){
+  "use strict";
+  var LANG = ((document.documentElement.lang || "pt").slice(0,2) === "en") ? "en" : "pt";
+  var TT = {"pt": {"blackScreen": "Tela preta", "laser": "Laser", "laserTitle": "Apontador laser (L)", "presTitle": "Modo apresentador: notas, próximo slide e cronômetro (P)", "presBtn": "Modo apresentador", "popupBlocked": "O navegador bloqueou a janela do apresentador. Libere pop-ups para este site e tente de novo.", "presenterPrefix": "Apresentador", "topTitle": "Modo apresentador", "searching": "Procurando a janela dos slides…", "openAudTitle": "Abrir a janela que vai para o projetor ou para a transmissão", "openAud": "Abrir janela dos slides", "pauseTitle": "Pausar / continuar (T)", "pause": "Pausar", "resume": "Continuar", "resetTitle": "Zerar cronômetro", "reset": "Zerar", "helpTitle": "Como usar", "curSlide": "Slide atual", "next": "Próximo", "notes": "Notas", "fontDown": "Diminuir letra", "fontUp": "Aumentar letra", "prev": "← Anterior", "nextBtn": "Próximo →", "laserBtnTitle": "Apontador laser: passe o mouse sobre o slide atual (L)", "blkTitle": "Escurece a tela do público (B)", "blkBtn": "Tela preta", "ovTitle": "Ver todos os slides (O)", "ovBtn": "Visão geral", "help": "← → ou passador para navegar · T pausa o cronômetro", "end": "Fim da apresentação", "noNotes": "Sem notas para este slide.", "conn": "Janela dos slides conectada", "notConn": "Janela dos slides não conectada", "helpHead": "Como apresentar", "h1": "Com projetor ou TV: arraste a <b>janela dos slides</b> para a segunda tela e aperte <b>F</b> nela (tela cheia). Esta janela fica no notebook.", "h2": "Em Teams ou Meet: compartilhe só a <b>janela</b> dos slides, não a tela inteira.", "h3": "Navegue por aqui, pelo passador ou pelas setas. As duas janelas andam juntas.", "h4": "<b>L</b> liga o laser: passe o mouse sobre o slide atual. <b>B</b> escurece a tela do público.", "ok": "Entendi", "param": "apresentador", "hint": " · <kbd>P</kbd> modo apresentador · <kbd>L</kbd> laser"}, "en": {"blackScreen": "Black screen", "laser": "Laser", "laserTitle": "Laser pointer (L)", "presTitle": "Presenter mode: notes, next slide and timer (P)", "presBtn": "Presenter mode", "popupBlocked": "The browser blocked the presenter window. Allow pop-ups for this site and try again.", "presenterPrefix": "Presenter", "topTitle": "Presenter mode", "searching": "Looking for the slides window…", "openAudTitle": "Open the window that goes to the projector or the broadcast", "openAud": "Open slides window", "pauseTitle": "Pause / resume (T)", "pause": "Pause", "resume": "Resume", "resetTitle": "Reset timer", "reset": "Reset", "helpTitle": "How to use", "curSlide": "Current slide", "next": "Next", "notes": "Notes", "fontDown": "Smaller text", "fontUp": "Larger text", "prev": "← Previous", "nextBtn": "Next →", "laserBtnTitle": "Laser pointer: hover over the current slide (L)", "blkTitle": "Darkens the audience screen (B)", "blkBtn": "Black screen", "ovTitle": "See all slides (O)", "ovBtn": "Overview", "help": "← → or clicker to navigate · T pauses the timer", "end": "End of presentation", "noNotes": "No notes for this slide.", "conn": "Slides window connected", "notConn": "Slides window not connected", "helpHead": "How to present", "h1": "With a projector or TV: drag the <b>slides window</b> to the second screen and press <b>F</b> on it (fullscreen). This window stays on your laptop.", "h2": "On Teams or Meet: share only the slides <b>window</b>, not the whole screen.", "h3": "Navigate from here, with a clicker or the arrow keys. Both windows move together.", "h4": "<b>L</b> turns on the laser: hover over the current slide. <b>B</b> darkens the audience screen.", "ok": "Got it", "param": "presenter", "hint": " · <kbd>P</kbd> presenter mode · <kbd>L</kbd> laser"}};
+  var T = TT[LANG];
+  var D = window.__deck; if (!D) return;
+  var NOTES = window.__notes || [];
+  var stage = D.stage, slides = D.slides, N = D.N;
+  var IS_P = /[?&](apresentador|presenter)\b/.test(location.search);
+  var KEY = 'glp-deck:' + location.pathname.replace(/[?#].*$/,'');
+  function pad(n){ return (n<10?'0':'')+n; }
+  function $(id){ return document.getElementById(id); }
+
+  /* ---------- comunicação entre janelas ---------- */
+  var peer = null;           // a outra janela (opener ou popup)
+  try { if (window.opener && !window.opener.closed) peer = window.opener; } catch(e){}
+  var bc = null;
+  try { bc = new BroadcastChannel(KEY); } catch(e){}
+  var seen = {}, remote = false;
+  function send(m){
+    m.id = Math.random().toString(36).slice(2); m.k = KEY; m.from = IS_P ? 'p' : 'a';
+    seen[m.id] = 1;
+    try { if (peer && !peer.closed) peer.postMessage(m, '*'); } catch(e){}
+    try { if (bc) bc.postMessage(m); } catch(e){}
+  }
+  function recv(m, src){
+    if (!m || m.k !== KEY || !m.id || seen[m.id]) return;
+    if (m.from === (IS_P ? 'p' : 'a')) return;   // só conversa com o outro papel
+    seen[m.id] = 1;
+    if (src && !peer) peer = src;
+    handle(m);
+  }
+  window.addEventListener('message', function(e){ recv(e.data, e.source); });
+  if (bc) bc.onmessage = function(e){ recv(e.data, null); };
+
+  window.__onGo = function(n){
+    if (!remote) send({t:'go', n:n});
+    if (IS_P) renderP(n);
+  };
+  function goRemote(n){ remote = true; try { D.go(n); } finally { remote = false; } if (IS_P) renderP(n); }
+
+  /* ---------- laser e tela preta (as duas janelas) ---------- */
+  var laser = document.createElement('div'); laser.className = 'laser'; stage.appendChild(laser);
+  var blk = document.createElement('div'); blk.className = 'blk'; blk.innerHTML = '<span>' + T.blackScreen + '</span>';
+  stage.parentNode.appendChild(blk);
+  var laserOn = false, blkOn = false, lastSent = 0;
+
+  function setLaser(on, fromRemote){
+    laserOn = on;
+    stage.classList.toggle('lz', on);
+    if (!on) laser.classList.remove('show');
+    var b = $('pLaser'); if (b) b.classList.toggle('on', on);
+    if (!fromRemote) send({t:'laser', on:on});
+  }
+  function setBlk(on, fromRemote){
+    blkOn = on; blk.classList.toggle('show', on);
+    var b = $('pBlk'); if (b) b.classList.toggle('on', on);
+    if (!fromRemote) send({t:'blk', on:on});
+  }
+  function placeLaser(x, y){
+    laser.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    laser.classList.add('show');
+  }
+  stage.addEventListener('mousemove', function(e){
+    if (!laserOn) return;
+    var r = stage.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width * 1920, y = (e.clientY - r.top) / r.height * 1080;
+    placeLaser(x, y);
+    var t = Date.now();
+    if (t - lastSent > 16) { lastSent = t; send({t:'lp', x:Math.round(x), y:Math.round(y)}); }
+  });
+  stage.addEventListener('mouseleave', function(){
+    if (!laserOn) return; laser.classList.remove('show'); send({t:'lh'});
+  });
+
+  function handle(m){
+    if (m.t === 'go') goRemote(m.n);
+    else if (m.t === 'laser') setLaser(m.on, true);
+    else if (m.t === 'lp') { if (laserOn) placeLaser(m.x, m.y); }
+    else if (m.t === 'lh') laser.classList.remove('show');
+    else if (m.t === 'blk') setBlk(m.on, true);
+    else if (m.t === 'hello' && !IS_P) { send({t:'go', n:D.cur()}); send({t:'blk', on:blkOn}); }
+    else if (m.t === 'ping' && !IS_P) send({t:'pong'});
+    else if (m.t === 'pong' || (m.t === 'go' && IS_P)) lastPong = Date.now();
+    if (IS_P && m.t !== 'ping') lastPong = Date.now();
+  }
+
+  /* ---------- abrir o modo apresentador ---------- */
+  function baseUrl(){ return location.href.replace(/[?#].*$/, ''); }
+  function openPresenter(){
+    var w = null;
+    try { w = window.open(baseUrl() + '?' + T.param + '#' + (D.cur()+1), 'glp-apresentador',
+                         'width=1280,height=780,menubar=no,toolbar=no,location=no'); } catch(e){}
+    if (w) { peer = w; try { w.focus(); } catch(e){} }
+    else alert(T.popupBlocked);
+  }
+  function openAudience(){
+    var w = null;
+    try { w = window.open(baseUrl() + '#' + (D.cur()+1), 'glp-slides', 'width=1100,height=640'); } catch(e){}
+    if (w) peer = w;
+  }
+
+  /* ---------- teclado (passador incluso) ---------- */
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (k === 'l' || k === 'L') { e.preventDefault(); setLaser(!laserOn); }
+    else if (k === 'b' || k === 'B' || k === '.') { e.preventDefault(); setBlk(!blkOn); }
+    else if ((k === 'p' || k === 'P') && !IS_P) { e.preventDefault(); openPresenter(); }
+    else if (k === 'F5') { e.preventDefault(); if (!IS_P) D.fs(); }
+    else if (IS_P && (k === 't' || k === 'T')) { e.preventDefault(); toggleTimer(); }
+  });
+
+  /* ---------- botões no rodapé da janela normal ---------- */
+  if (!IS_P) {
+    var bFs = $('bFs');
+    if (bFs) {
+      var bL = document.createElement('button'); bL.id = 'bLaser'; bL.title = T.laserTitle; bL.textContent = T.laser;
+      bL.onclick = function(){ setLaser(!laserOn); };
+      var bP = document.createElement('button'); bP.id = 'bPres'; bP.title = T.presTitle;
+      bP.textContent = T.presBtn; bP.onclick = openPresenter;
+      bFs.parentNode.appendChild(bL); bFs.parentNode.appendChild(bP);
+    }
+    var _sl = setLaser;
+    setLaser = function(on, r){ _sl(on, r); var b = $('bLaser'); if (b) b.style.background = on ? 'rgba(27,95,168,.9)' : ''; };
+    return;
+  }
+
+  /* ================= JANELA DO APRESENTADOR ================= */
+  document.title = T.presenterPrefix + ' · ' + document.title;
+  document.body.classList.add('pm');
+  var ttl = (document.title.split('·').pop() || '').trim();
+  var shell = document.createElement('div'); shell.className = 'pmx';
+  shell.innerHTML =
+    '<div class="pmx-top">' +
+      '<div class="pmx-ttl">' + T.topTitle + ' · <b>' + ttl + '</b></div>' +
+      '<div class="pmx-con" id="pCon"><i></i><span>' + T.searching + '</span> <button id="pOpenA" title="' + T.openAudTitle + '">' + T.openAud + '</button></div>' +
+      '<div class="pmx-clock" id="pClock">--:--</div>' +
+      '<div class="pmx-timer" id="pTimer"><span class="tv" id="pTv">00:00:00</span>' +
+        '<button id="pTp" title="' + T.pauseTitle + '">' + T.pause + '</button><button id="pTr" title="' + T.resetTitle + '">' + T.reset + '</button></div>' +
+      '<button id="pHelp" title="' + T.helpTitle + '">?</button>' +
+    '</div>' +
+    '<div class="pmx-cur"><div class="pmx-lab">' + T.curSlide + ' <b id="pLab"></b></div><div class="pmx-box" id="pBox"></div></div>' +
+    '<div class="pmx-side">' +
+      '<div class="pmx-next"><div class="pmx-lab">' + T.next + ' <b id="pNlab"></b></div><div class="pmx-nf" id="pNf"></div></div>' +
+      '<div class="pmx-notes"><div class="pmx-lab">' + T.notes + '<span class="pmx-fs"><button id="pFm" title="' + T.fontDown + '">A−</button><button id="pFp" title="' + T.fontUp + '">A+</button></span></div>' +
+        '<div class="pmx-nb" id="pNotes"></div></div>' +
+    '</div>' +
+    '<div class="pmx-bot">' +
+      '<button class="big" id="pPrev">' + T.prev + '</button><span class="ix" id="pIx"></span><button class="big" id="pNext">' + T.nextBtn + '</button>' +
+      '<button id="pLaser" title="' + T.laserBtnTitle + '">' + T.laser + ' <kbd>L</kbd></button>' +
+      '<button id="pBlk" title="' + T.blkTitle + '">' + T.blkBtn + ' <kbd>B</kbd></button>' +
+      '<button id="pOv" title="' + T.ovTitle + '">' + T.ovBtn + ' <kbd>O</kbd></button>' +
+      '<span class="sp"></span><span class="pmx-help">' + T.help + '</span>' +
+    '</div>';
+  document.body.appendChild(shell);
+  var wrap = stage.parentNode;
+  $('pBox').appendChild(wrap);
+  if (window.ResizeObserver) new ResizeObserver(function(){ D.fit(); }).observe($('pBox'));
+  D.fit();
+
+  $('pPrev').onclick = function(){ D.go(D.cur()-1); };
+  $('pNext').onclick = function(){ D.go(D.cur()+1); };
+  $('pLaser').onclick = function(){ setLaser(!laserOn); };
+  $('pBlk').onclick = function(){ setBlk(!blkOn); };
+  $('pOv').onclick = function(){ D.toggleOv(); };
+  $('pOpenA').onclick = openAudience;
+
+  /* letra das notas */
+  var nfs = 21;
+  try { nfs = parseInt(localStorage.getItem('glp-notes-fs'), 10) || 21; } catch(e){}
+  function applyFs(){ $('pNotes').style.setProperty('--nfs', nfs + 'px'); try { localStorage.setItem('glp-notes-fs', nfs); } catch(e){} }
+  $('pFm').onclick = function(){ nfs = Math.max(14, nfs-2); applyFs(); };
+  $('pFp').onclick = function(){ nfs = Math.min(40, nfs+2); applyFs(); };
+  applyFs();
+
+  /* próximo slide + notas */
+  function staticClone(s){
+    var cl = s.cloneNode(true);
+    cl.classList.add('on'); cl.style.opacity = '1'; cl.style.visibility = 'visible';
+    cl.style.filter = 'none'; cl.style.transition = 'none';
+    cl.querySelectorAll('.a,.wipe,.kb,.drw').forEach(function(el){
+      el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none'; el.style.animation = 'none';
+    });
+    return cl;
+  }
+  function scaleNext(){
+    var f = $('pNf'), c = f.querySelector('.s');
+    if (c) c.style.transform = 'scale(' + (f.clientWidth/1920) + ')';
+  }
+  if (window.ResizeObserver) new ResizeObserver(scaleNext).observe($('pNf'));
+  function renderP(n){
+    var lab = function(i){ return pad(i+1) + ' · ' + (slides[i].getAttribute('data-label') || ''); };
+    $('pLab').textContent = lab(n);
+    $('pIx').textContent = pad(n+1) + ' / ' + pad(N);
+    var f = $('pNf'); f.innerHTML = '';
+    if (n+1 < N) { f.appendChild(staticClone(slides[n+1])); $('pNlab').textContent = lab(n+1); scaleNext(); }
+    else { f.innerHTML = '<div class="pmx-end">' + T.end + '</div>'; $('pNlab').textContent = ''; }
+    var nb = $('pNotes'), items = NOTES[n] || [];
+    if (!items.length) { nb.innerHTML = '<div class="none">' + T.noNotes + '</div>'; }
+    else {
+      var ul = document.createElement('ul');
+      items.forEach(function(t){ var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+      nb.innerHTML = ''; nb.appendChild(ul);
+    }
+    nb.scrollTop = 0;
+  }
+  renderP(D.cur());
+
+  /* relógio e cronômetro */
+  var t0 = Date.now(), acc = 0, running = true;
+  function el(){ return acc + (running ? Date.now() - t0 : 0); }
+  function toggleTimer(){
+    if (running) { acc += Date.now() - t0; running = false; } else { t0 = Date.now(); running = true; }
+    $('pTimer').classList.toggle('paused', !running); $('pTp').textContent = running ? T.pause : T.resume;
+  }
+  $('pTp').onclick = toggleTimer;
+  $('pTr').onclick = function(){ acc = 0; t0 = Date.now(); tick(); };
+  function tick(){
+    var s = Math.floor(el()/1000);
+    $('pTv').textContent = pad(Math.floor(s/3600)) + ':' + pad(Math.floor(s/60)%60) + ':' + pad(s%60);
+    var d = new Date(); $('pClock').textContent = pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+  setInterval(tick, 500); tick();
+
+  /* status da conexão com a janela dos slides */
+  var lastPong = 0;
+  function status(){
+    var ok = Date.now() - lastPong < 4500;
+    var c = $('pCon'); c.classList.toggle('ok', ok);
+    c.querySelector('span').textContent = ok ? T.conn : T.notConn;
+    $('pOpenA').style.display = ok ? 'none' : '';
+  }
+  setInterval(function(){ send({t:'ping'}); status(); }, 1500);
+  send({t:'hello'}); setTimeout(status, 600);
+
+  /* ajuda */
+  function help(){
+    var old = document.querySelector('.pmx-tip'); if (old) { old.remove(); return; }
+    var d = document.createElement('div'); d.className = 'pmx-tip';
+    d.innerHTML = '<b>' + T.helpHead + '</b><ol>' +
+      '<li>' + T.h1 + '</li>' +
+      '<li>' + T.h2 + '</li>' +
+      '<li>' + T.h3 + '</li>' +
+      '<li>' + T.h4 + '</li></ol>' +
+      '<button id="pTipX">' + T.ok + '</button>';
+    document.body.appendChild(d);
+    $('pTipX').onclick = function(){ d.remove(); };
+  }
+  $('pHelp').onclick = help;
+  var seenTip = false; try { seenTip = localStorage.getItem('glp-pm-tip') === '1'; localStorage.setItem('glp-pm-tip','1'); } catch(e){}
+  if (!seenTip) help();
 })();
 </script>
 </body></html>
