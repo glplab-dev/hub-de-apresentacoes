@@ -1,4 +1,4 @@
-# Apresentações GLP Laboratórios — site estático
+# Materiais comerciais GLP Laboratórios — site estático
 
 Pasta pronta para publicar no GitHub Pages. Nenhuma dependência externa: fontes, fotos,
 logos e certificados ficam na pasta `assets/`, compartilhada por todas as páginas (cada
@@ -8,7 +8,7 @@ imagem existe uma vez só, mesmo quando aparece em vários decks e nas versões 
 
 | Arquivo | O que é |
 |---|---|
-| `index.html` | Índice com um card por apresentação (botões PT/EN e download de PDF) |
+| `index.html` | Página inicial: apresentações e materiais de apoio, um card por item (botões PT/EN e download de PDF) |
 | `mineracao.html` / `mineracao-en.html` | Mineração / Mining — 17 slides |
 | `institucional.html` / `institucional-en.html` | Institucional / Corporate — 16 slides |
 | `laboratorios-parceiros.html` / `…-en.html` | Laboratórios Parceiros / Partner Laboratories — 12 slides |
@@ -16,9 +16,18 @@ imagem existe uma vez só, mesmo quando aparece em vários decks e nas versões 
 | `oleo-gas.html` / `oleo-gas-en.html` | Óleo & Gás / Oil & Gas — 17 slides |
 | `integracao.html` / `integracao-en.html` | Integração / Onboarding — 9 slides (uso interno) |
 | `*.pdf` | O PDF de cada apresentação, com o mesmo nome da página |
+| `materiais/` | One-pages (`onepage-<tema>-pt.pdf` / `-en.pdf`: mineracao, oleo-gas, alimentos, agua, laboratorios-parceiros, wipe-test) e o artigo do Wipe Test (`artigo-wipe-test-pt.pdf` / `-en.pdf`) |
 | `assets/` | Imagens e fontes usadas pelas páginas — **precisa ir junto** |
 | `.nojekyll` | Impede o GitHub de processar os arquivos com Jekyll |
 | `robots.txt` | Pede aos buscadores para não indexar |
+
+## Materiais de apoio (one-pages e artigo)
+
+Os PDFs ficam em `materiais/` e aparecem na seção **Materiais de apoio** do `index.html`,
+cada um em português e inglês. As miniaturas dos cards são `assets/th-*.webp`.
+Para trocar um one-page, substitua o PDF em `materiais/` mantendo o mesmo nome — o card
+continua funcionando. Contato padrão nos materiais: `vendas@glplab.com.br`,
+`propostas@glplab.com.br` e WhatsApp +55 19 98455-9001.
 
 ## Como publicar
 
